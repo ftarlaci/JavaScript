@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>BookLand</title>
+<script src="bookland.js" defer></script>
+<link rel="stylesheet" type="text/css" href="bookland.css">
+</head>
+
+
+<body>
+	<div id="header">bookland</div>
+	<div id="main">
+		<form id="booklandform">
+			<table>
+				<tbody>
+					<tr>
+						<td class="bookbox">Author name: </td>
+						<td><input type="text" class="text" name="author" id="author"></td>
+					</tr>
+					<tr>
+						<td class="bookbox">Book title: </td>
+						<td><input type="text" class="text" name="title" id="title"></td>
+					</tr>
+					<tr>
+						<td> </td>
+						<td>
+							<input type="button" class="theButton" value="Find Book" id="findbook">
+							<input type="button" class="theButton" value="Clear Info" id="clear">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<!-- textarea for book description -->
+			<textarea name="description" rows="15" cols="60" id="textarea"></textarea>
+			
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,378 @@
+/*Author: Fatma Tarlaci
+Class: CS 193C, Summer 2018*/ 
+
+
+@media only screen and (min-width: 815px) {
+	.main {
+		display: grid;
+		grid-template-columns: 65% 35%;
+	    grid-template-rows: auto;
+	    font-family: sans-serif;	    
+	}
+
+	body {
+		margin-left: calc((100% - 815px) / 2);
+	}
+
+
+
+	h1 {
+		color: #CC0000;
+		font-weight: bold;
+		font-family: sans-serif;
+		grid-column-start: 1;
+		grid-row-start: 1; 
+		font-size: 32pt;
+		margin: 0px;
+		padding: 0px;
+		float: left;
+	}
+
+	h2 {
+		font-weight: bold;
+		font-family: sans-serif;
+		font-size: 18pt;
+		margin-top: 70px;
+		padding: 0px;
+		grid-column-start: 1;
+		grid-row-start: 1;
+	}
+
+	h3 {
+		color: #CC0000;
+		font-weight: bold;
+	/*	margin-top: 10px;*/
+		grid-column-start: 1;
+		grid-row-start: 1;
+
+	}	
+
+	#autumn {
+		display: none;
+	}
+
+	#breaktitle {
+		line-height: 20px;
+		float: right;	
+		margin-right: 25px;
+		/*overflow-wrap: break-word;*/
+		width: 14ex;
+		text-align: right;
+	}
+
+
+	#bingimg {
+		float: left;
+		margin-right: 10px;
+		width: 350px;
+		height: 220px;
+	}
+
+	#left-col {
+		grid-column: 1;
+		grid-row-start: 1; 
+	}
+
+	.content {
+		margin-left: 40px;
+		font-family: sans-serif;
+		float: left;
+		font-size: 16px;
+	}
+
+
+	.entry:first-child {
+		content: " ";
+		display: block;
+		border-top: 1px solid black;
+		width: 80%;
+		/*margin-left: 30px;*/
+		padding-top: 10px;
+
+	}
+
+	.entry::after {
+		content: " ";
+		display: block;
+		border-bottom: 1px solid black;
+		margin-bottom: 10px;
+		padding-top: 10px;
+		width: 90%;
+		/*margin-left: 40px;*/
+
+
+	}
+
+	#right-col {
+		grid-column-start: 2;
+		grid-row-start: 1;
+	}
+
+	#calendar {
+		font-size: 14pt;
+		font-weight: bold;
+		font-family: sans-serif;
+		margin-left: 10px;
+		width: 300px;
+
+	}
+
+
+	.entry {
+		margin-bottom: 10px;
+		font-size: 12pt;
+		font-style: italic;
+		
+		margin-left: 10px;
+		display: block;
+	}
+} /*end of large size screen css*/
+
+
+/*smaller screen specs below*/
+@media only screen and (min-width: 650px) and (max-width: 814px) {
+	.main {
+		display: grid;
+		grid-template-columns: 100%;
+	    grid-template-rows: auto;
+	    font-family: sans-serif;
+	}
+
+	h1 {
+		color: #CC0000;
+		font-weight: bold;
+		font-family: sans-serif;
+		grid-column-start: 1;
+		grid-row-start: 1; 
+		font-size: 32pt;
+		margin: 0px;
+		padding: 0px;
+		float: left;
+	}
+
+	/*h3 {
+		grid-column-start: 1;
+		grid-row-start: 1;
+
+	}
+*/
+	#breaktitle {
+		display: none;
+	}
+
+	#autumn {
+		margin-top: 5px;
+		color: #CC0000;
+		font-weight: bold;
+		float: left;
+		text-align: left;
+		grid-column-start: 1;
+		grid-row-start: 1;
+		width: calc(100% - 10px);
+
+	}
+
+	h2 {
+		font-weight: bold;
+		font-family: sans-serif;
+		font-size: 18pt;
+		margin-top: 70px;
+		padding: 0px;
+		margin-left: 0px;
+		grid-column-start: 1;
+		grid-row-start: 1;
+	}
+
+	#left-col {
+		grid-column: 1;
+		grid-row-start: 1; 
+	}
+
+	#bingimg {
+		float: left;
+		margin-right: 10px;
+		width: 350px;
+		height: 200px;
+	}
+
+	.content {
+		margin-left: 40px;
+		font-family: sans-serif;
+		float: left;
+		font-size: 16px;
+
+	}
+
+
+	.entry:first-child {
+		content: " ";
+		display: block;
+		border-top: 1px solid black;
+		width: 150%;
+		margin-left: 20px;
+		padding-top: 10px;
+
+	}
+
+	.entry::after {
+		content: " ";
+		display: block;
+		border-bottom: 1px solid black;
+		margin-bottom: 10px;
+		padding-top: 10px;
+		width: 150%;
+		/*margin-left: 40px;*/
+
+
+	}
+
+	#calendar {
+		font-size: 14pt;
+		font-weight: bold;
+		font-family: sans-serif;
+		margin-left: 20px;
+
+
+	}
+
+
+	.entry {
+		margin-bottom: 10px;
+		font-size: 12pt;
+		font-style: italic;
+		margin-left: 20px;
+		display: block;
+	}
+} /* end of smaller screen */
+
+
+
+/* begin smallest screen specs*/ 
+@media only screen and (max-width: 650px) {
+	.main {
+		display: grid;
+		grid-template-columns: 100%;
+	    grid-template-rows: auto auto auto;
+	    font-family: sans-serif;
+	}
+
+	h1 {
+		color: #CC0000;
+		font-weight: bold;
+		font-family: sans-serif;
+		grid-column-start: 1;
+		grid-row-start: 1; 
+		font-size: 28pt;
+		margin: 0px;
+		padding: 0px;
+		float: left;
+	}
+
+	#breaktitle {
+		display: none;
+	}
+
+	#autumn {
+		margin-top: 5px;
+		color: #CC0000;
+		font-weight: bold;
+		float: left;
+		text-align: left;
+		grid-column-start: 1;
+		grid-row-start: 1;
+		width: auto;
+
+	}
+
+	#bingconcert {
+		font-weight: bold;
+		font-family: sans-serif;
+		font-size: 18pt;
+		margin-top: 40px;
+		margin-left: 0px;
+		padding: 0px;
+		float: left;
+		text-align: left;
+		width: auto;
+	}
+
+	#cal {
+		margin-top: 0px;
+		margin-bottom: 30px;
+	}
+
+	/*#left-col {
+		grid-column: 1;
+		grid-row-start: 1; 
+	}*/
+
+	#bingimg {
+		width: calc(100% - 10px);
+		margin-bottom: 20px;	
+	}
+
+	#content {
+		grid-column-start: 1;
+		grid-row-start: auto;
+	}
+
+	#right-col {
+		grid-column: 1;
+		grid-row-start: auto; 
+	}
+
+	#calendar {
+		grid-column: 1;
+		grid-row-start: auto / span 2; 
+		font-size: 14pt;
+		font-weight: bold;
+		font-family: sans-serif;
+	}
+
+	.entry:first-child {
+		content: " ";
+		display: block;
+		border-top: 1px solid black;
+		width: auto;
+		padding-top: 10px;
+		margin-top: 30px;
+
+	}
+
+	.entry:after {
+		content: " ";
+		display: block;
+		border-bottom: 1px solid black;
+		margin-bottom: 10px;
+		padding-top: 10px;
+		width: auto;
+	}
+
+	.entry {
+		margin-bottom: 10px;
+		font-size: 12pt;
+		font-style: italic;
+		float: left;
+		display: block;
+	}
+} /*end of the smallest screen*/ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

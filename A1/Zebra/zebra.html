@@ -1,0 +1,104 @@
+<!-- Author: Fatma Tarlaci
+Class: CS 193C, Summer 2018 -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="refresh" content="3" >
+<title>Zebra</title>
+<style>
+	h1 {
+		text-align: center;
+	}
+	.serifFont {
+		font-family: serif;
+	}
+	tr:nth-child(odd) {
+    	background-color: #EEE
+	}
+
+	th {
+		font-family: sans-serif;
+		font-size: 12px;
+		font-weight: normal;
+    	color: white;
+    	background-color: black;
+    	border-width: 1px;
+    	text-align: center;
+    	border-color: black;
+    	padding: 5px;   
+	}
+
+	th#whiteBorder {
+		border-width: 1px;
+		border-style: solid;
+		border-left-color: white;
+	}
+
+	td {
+		font-family: sans-serif;
+		font-size:  12px;
+		border: 1px solid black;
+		padding: 5px;
+		border-collapse: collapse;		
+	}
+
+	tr {
+		height: 25px;
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+
+	table {
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+</style>
+</head>
+
+<body>
+	<h1 class="serifFont"> Geographic Origin of Stanford Undergrads</h1>
+	<table>
+		<tr >
+			<th>Geographic Origin</th>
+    		<th id="whiteBorder">Number of Students</th> 
+  		</tr>
+  		<tr>
+		    <td>California</td>
+		    <td>2,943</td> 
+		</tr>
+		<tr>
+		    <td>Other US</td>
+		    <td>3,447</td> 
+		</tr>
+		<tr>
+		    <td>Asia</td>
+		    <td>264</td> 
+		</tr>
+		<tr>
+		    <td>The Americas</td>
+		    <td>83</td> 
+		</tr>
+		<tr>
+		    <td>Europe</td>
+		    <td>69</td> 
+		</tr>
+		<tr>
+		    <td>Africa</td>
+		    <td>44</td> 
+		</tr>
+		<tr>
+		    <td>Middle East and North Africa</td>
+		    <td>22</td> 
+		</tr>
+		<tr>
+		    <td>Pacific Basin</td>
+		    <td>6</td> 
+		</tr>
+	</table>
+	<p class="serifFont"><em>Source: Stanford Facts Website</em></p>
+</body>
+</html>

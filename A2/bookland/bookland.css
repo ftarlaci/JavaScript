@@ -1,0 +1,53 @@
+body {
+	background-color: #708090;  
+}
+
+#header {
+	font-family: "Arial Black", Gadget, sans-serif;
+	text-align: center;
+	font-size: 60pt;
+	color: #0000CD;
+	text-decoration: underline; 
+}
+
+#main {
+	width: 850px;
+	margin-left: 400px;
+}
+
+table {
+	justify-content: center;
+}
+
+textarea {
+	margin-top: 30px;
+	border-style: outset;
+	border-width: 2px;
+
+}
+
+
+#author {
+	width: 250px;
+	height: 20px;
+	border-style: outset;
+	border-color: black;
+}
+
+#title {
+	width: 250px;
+	height: 20px;
+	border-style: outset;
+	border-color: black;
+}
+
+.theButton {
+	border-style: outset;
+	border-color: black;
+	height: 20px;
+	text-align: center;
+	
+
+
+}
+

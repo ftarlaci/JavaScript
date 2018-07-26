@@ -1,0 +1,118 @@
+body {
+	font-family: sans-serif;
+}
+
+select {
+	margin-left: 8px;
+	width: 50px;
+}
+
+h1 {
+	font-size: xx-large;
+}
+
+#carpic {
+	float: right;
+}
+
+#main {
+	width: 900px;
+	margin-bottom:auto;
+
+}
+
+#fullprice {
+	margin-left: 10px;
+	margin-bottom: 8px;
+	
+}
+
+.boxname {
+	border-style: solid;
+	padding: 10px;
+	margin-right: 5px;
+	margin-left: 5px;
+	margin-top: 2px;
+	margin-bottom: 8px;
+	background-color: #808080;
+	color: #FFFFFF;
+
+}
+
+.boxname::first-letter {
+	font-size: x-large;
+}
+
+
+/*why is this not working!!!!*/
+.boxname:nth-word(2):first-letter; { 
+	font-size: x-large;
+}
+
+.boxcontainer {
+	border: 1px solid black;
+	width: 370px;
+	line-height: 160%;
+	margin-bottom: 10px; 
+}
+
+.prices {
+	float: right;
+	margin-right: 10px;
+}
+
+.bodystyle {
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+#dimming {
+	margin-bottom: 10px;
+
+}
+
+#theButton {
+	float: right;
+	margin-right: 8px;
+	margin-bottom: 8px;
+	
+}
+
+label:hover {
+	cursor:pointer;
+}
+
+ul {
+	margin: 4px;
+}
+
+
+#selectcolor {
+	float: left;
+	
+}
+
+#left {
+	float: left;
+	width: 400px;
+}
+
+#formrightside {
+	float: left;
+	width: 425px;
+}
+
+
+.combtext {
+	font-size: 11pt;
+}
+
+
+
+
+
+
+
+
+
+

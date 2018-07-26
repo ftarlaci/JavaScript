@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>car Options</title>
+<script src="car.js" defer></script>
+<link rel="stylesheet" type="text/css" href="car.css">
+
+</head>
+
+<body>
+	<div id=main>
+		<form id="caroptions">
+
+		<div id=header> <h1>Configure Your GT Super Sportscar</h1></div>
+		
+			<div id="left">
+				<div id="config" class="boxcontainer">
+					<div class="boxname">CONFIGURATION</div>
+				<div class="bodystyle">
+					<input type="radio" name="carselections" value="gtmanual" id="radioman" checked="checked">
+					<label for="radioman">GT Manual <span class="prices">$17,790.00</span>
+						<br></label>
+						
+					<input type="radio" name="carselections" value="gtauto" id="radioauto">
+					<label for="radioauto">GT Automatic<span class="prices">$18,590.00</span>
+						<br></label>
+					<input type="radio" name="carselections" value="gtsmanual" id="radiomangts">
+					<label for="radiomangts">GT-S Manual<span class="prices">$22,455.00</span>
+						<br></label>
+					<input type="radio" name="carselections" value="gtssport" id="radioautosport">
+					<label for="radioautosport">GT-S Sportshift<span class="prices">$23,155.00</span>
+						<br></label>
+				</div>
+			</div>
+
+			<!-- options panel -->
+
+			<div id="optionspanel" class="boxcontainer">
+				<div class="boxname">FACTORY OPTIONS</div>
+				<div class="bodystyle">
+					<input type="radio" name="comboselections" value="firstcombo" id="firstcombo">
+					<label for="firstcombo">Option Combo #1<span class="prices">$1,235.00</span></label>
+					<ul class="combtext"> <li>Power, Windows, Doors, cruise Control</li></ul>
+					<input type="radio" name="comboselections" value="secondcombo" id="secondcombo">
+					<label for="secondcombo">Option Combo #2<span class="prices">$3,354.00</span></label>
+					<ul class="combtext"> 
+						<li> Rear Spoiler and Fog Lamps</li>
+						<li> Keyless Entry</li>
+						<li> Power Tilt & Slide Moonroof</li>
+						<li> Power Windows, Doors, Cruise Control</li>
+					</ul>
+					<input type="radio" name="comboselections" value="nocombo" checked ="checked" id="nocombo">
+					<label for="nocombo">No Combo<span class="prices">$0.00</span><br></label>
+				</div>
+			</div>
+
+
+			<!-- dealer options box -->
+			<div id=thirdbox class="boxcontainer">
+				<div class="boxname">DEALER OPTIONS</div>
+				<input type="checkbox" name="stereo" value="stereo" id="stereo">
+				<label for="stereo"> Upgraded Stereo System<span class="prices">$550.00</span><br></label>
+
+				<input type="checkbox" name="security" value="security" id="security">
+				<label for="security"> VIP Security System<span class="prices">$399.00</span><br></label>
+
+				<input type="checkbox" name="dimming" value="dimming" id="dimming">
+				<label for="dimming"> Auto-Dimming Mirror<span class="prices">$295.00</span><br></label>
+			</div>
+
+
+			<!-- total price box -->
+
+			<div class="boxcontainer">
+				<div class="boxname"> TOTAL PRICE </div>
+				<input type="text" name="fullprice" id="fullprice">
+				<input type="button" value="Calculate Total" id="theButton">  <!-- I need js eventhandler function for this button -->
+			</div>
+		</div>
+
+<!-- 
+		right column with the car picture  -->
+
+		<div id="formrightside">
+			<div id="selectcolor" class="boxcontainer">
+				<div class="boxname">CHOOSE A COLOR </div>
+
+				<!-- dropdown menu -->
+				<select name="colors" size="5" onchange="changeColors();"> <!-- switch pictures in js -->
+					<option value="red.jpg">Red</option>
+					<option value="blue.jpg">Blue</option>
+					<option value="silver.jpg">Silver</option>
+					<option value="white.jpg">White</option>
+					<option value="black.jpg">Black</option>
+				</select>
+				<img src="red.jpg" alt="redcar" id="carpic">
+			</div>
+		</div>
+	<!-- </div> -->
+
+	</form>
+</div>
+</body>
+</html>
