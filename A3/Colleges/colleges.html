@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Bay Area Colleges and Universities</title>
+<script src="colleges.js" defer></script>
+<link rel="stylesheet" type="text/css" href="colleges.css">
+</head>
+
+<body>
+	<h1>Bay Area Colleges and Universities</h1>
+	<div id="main">
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>SAT High</th>
+					<th>SAT Low</th>
+					<th>Tuition</th>
+				</tr>
+			</thead>
+			<tbody id="generatedTable">
+
+				<!-- will be generated in .js -->
+			</tbody>  
+		</table>
+
+
+		<div id="search">
+			<table>
+				<thead>
+					<tr>
+						<th>Search Criteria</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<input class="radioButtons" type="radio" name="owner" value="public"> Public
+							
+							<input class="radioButtons" type="radio" name="owner" value="private"> Private
+							
+							<input class="radioButtons" type="radio" name="owner" value="" checked="checked"> Don't Care
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<span class="bold">Maximum Tuition</span>
+							<br>
+							leave blank for don't care
+							<input type="text" name="maxtuition" id="MT">
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<span class="bold">Maximum High SAT</span>
+							<br>
+							leave blank for don't care
+							<input type="text" name="maxsat" id="MHS">
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<span class="bold">Minimum low SAT</span>
+							<br>
+							leave blank for don't care
+							<input type="text" name="minsat" id="MLS">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<input type="submit" value="Update" id="updateBtn" >
+		</div>
+	</div>
+</body>
+</html>
+
+
+

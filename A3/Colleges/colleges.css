@@ -1,0 +1,100 @@
+h1 {
+	font-size: 30pt;
+}
+
+body {
+	font-family: sans-serif;
+}
+
+#MT  {
+	height: 25px;
+}
+
+#MLS {
+	height: 25px;
+}
+
+#MHS {
+	height: 25px;
+}
+
+#main {
+	display: flex;
+}
+
+#search {
+	margin-left: 55px;
+}
+
+
+table {
+	border-collapse: collapse;
+	border: 3px solid gray;
+}
+
+/*tr:nth-child(odd) {
+    	background-color: #C0C0C0
+	}*/
+
+th, td {
+	padding: 8px;
+}
+
+td {
+	padding-top: 10px;
+
+}
+
+td + td {
+	border-left: 3px solid gray;
+	/*justify-content: center;*/
+}
+
+th + th {
+	border-left: 1px solid gray;
+	border-right: 3px solid gray;
+}
+
+thead {
+	color: white;
+	background-color: #696969;
+	
+}
+
+#updateBtn {
+	background-color: #C0C0C0;
+	font-size: 14pt;
+	padding: 10px;
+	border: 1px solid blue;
+	margin-top: 15px;
+	float: left; 
+	width: 90px;
+}
+
+.zebra {
+	background-color: #C0C0C0;
+}
+
+.bold {
+	font-size: 15pt;
+}
+
+.inpt {
+	width: 130px;
+	height: 30px;
+	padding: 0px;
+	margin-left: 10px;
+
+}
+
+.textarea {
+  	font-size: 80%;
+  	text-align: right;
+  	width: 100px;
+  	height: 30px;
+}
+
+.radiobuttons {
+	margin-left: 18px;
+}
+
