@@ -1,0 +1,38 @@
+#map {
+	position: absolute;
+}
+
+#mapFrame {
+	overflow: hidden;
+	position: absolute;
+	border: solid gray;
+	border-width: 10px;
+	width: 0px;
+	height: 0px;
+}
+
+#mapNavigation {
+	position: absolute;
+	text-align: center;
+	width: 100px;
+	height: 200px;
+	opacity: 0.5;
+	background-color: #d3d3d3;
+	right: 15px;
+	top: 15px;
+	margin: 20px;
+	float:right;
+}
+
+#zooming {
+	margin-top: 20px;
+}
+
+#directions {
+	margin-top: 40px;
+}
+
+#left {
+	margin-right: 20px;
+}
+
