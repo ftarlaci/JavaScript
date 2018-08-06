@@ -1,38 +1,58 @@
-#map {
+input {
+	margin: 4px;
+}
+
+#mapImg {
 	position: absolute;
+}
+#mapImg {
+	position: absolute;
+	/*width: 800px;
+	height: 600px;*/
 }
 
 #mapFrame {
 	overflow: hidden;
 	position: absolute;
 	border: solid gray;
-	border-width: 10px;
-	width: 0px;
-	height: 0px;
+	border-width: 20px;
+	top: 10px;
+	left: 10px;
+	/*width: 820px;
+	height: 620px;*/
 }
 
 #mapNavigation {
-	position: absolute;
-	text-align: center;
+	
 	width: 100px;
 	height: 200px;
-	opacity: 0.5;
-	background-color: #d3d3d3;
-	right: 15px;
-	top: 15px;
+	position: absolute;
+	right: 10px;
+	top: 10px;
 	margin: 20px;
-	float:right;
+	/*float:right;*/
+	text-align: center;
+	background-color: #d3d3d3;
+	opacity: 0.5;
 }
 
 #zooming {
 	margin-top: 20px;
+	/*float: right;
+	text-align: center;
+	margin-bottom: */
 }
 
 #directions {
 	margin-top: 40px;
+	/*float: right;
+	text-align: center;*/
 }
+
+
 
 #left {
 	margin-right: 20px;
 }
+
 

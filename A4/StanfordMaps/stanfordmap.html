@@ -8,17 +8,18 @@
 </head>
 <body>
 
-	<div id="mapFrame"> <img id="map" src="map-s.gif" alt="map"> </div>
+	<div id="mapFrame"> <img id="mapImg" src="map-s.gif" alt="map"> </div>
+	
 	<form id="mapnavigation">
 		<div id="zooming">
-			<input type="button" id="zoomIn" value="+">
-			<input type="button" id="zoomOut" value="-">
+			<input type="button" id="zoomIn" value="+" onmousedown="event.stopPropagation();" ondblclick="event.stopPropagation();"> <!-- stop bubbling up to parent elements or capturing down to child elements. -->
+			<input type="button" id="zoomOut" value="-" onmousedown="event.stopPropagation();" ondblclick="event.stopPropagation();">
 		</div>
 		<div id="directions">
-			<input type="button" id="up" value="^"><br>
-			<input type="button" id="left" value="<">
-			<input type="button" id="right" value=">"><br>
-			<input type="button" id="down" value="v">
+			<input type="button" id="up" value="^" onmousedown="event.stopPropagation();" ondblclick="event.stopPropagation();"><br>
+			<input type="button" id="left" value="<" onmousedown="event.stopPropagation();" ondblclick="event.stopPropagation();">
+			<input type="button" id="right" value=">" onmousedown="event.stopPropagation();" ondblclick="event.stopPropagation();"><br>
+			<input type="button" id="down" value="v" onmousedown="event.stopPropagation();" ondblclick="event.stopPropagation();">
 		</div>
 	</form>
 
