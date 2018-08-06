@@ -1,12 +1,13 @@
 "use strict";
 
-const FRAME_WINDOW = 60;
-const PIXEL = 4;
+// const FRAME_WINDOW = 100;
+const PIXEL = 6;
 const INTERVAL = 10;
 const MARGIN = 20;
+const FRAME_MARGIN = 60;
+const HALF = 2;
 
-var windowHeight = 0;
-var windowWidth = 0;
+
 var mapFrameHeight = 0;
 var mapFrameWidth = 0;
 var cursorX = 0;
@@ -21,102 +22,151 @@ var prevX;
 var prevY;
 
 var mapArray = [ 
-					{ filename: "map-s.gif", width:1283, height: 997 },
-					{ filename: "map-m.gif", width:2047, height: 1589 },
-					{ filename: "map-l.gif", width:3063, height: 2373 },
-					{ filename: "map-xl.gif",width:4084, height: 3164 },
+					{ filename: "map-s.gif", height: 997, width:1283 },
+					{ filename: "map-m.gif", height: 1589, width:2047 },
+					{ filename: "map-l.gif", height: 2373, width:3063 },
+					{ filename: "map-xl.gif", height: 3164, width:4084 },
 
 				]
 
-var mapFrame = document.getElementById("mapFrame");
-var mapImg = document.getElementById("mapImg");
 
-function preloadImages() {
-	for(let i = 0; i < 4; i++){
-		mapImg.src = mapArray[i].filename;
+document.addEventListener("mousedown", handleMouseDown);
+function handleMouseDown(event){
+	cursorX = event.clientX;
+	cursorY = event.clientY;
+	event.preventDefault();
+	var inBox;
+	if((cursorY > MARGIN && cursorY < (mapFrameHeight + MARGIN)) && 
+		( cursorX < (mapFrameWidth + MARGIN) && cursorX > MARGIN)){
+		inBox = true;
+	} else {
+		inBox = false;
 	}
-	mapImg.src = mapArray[currImg].filename;
+
+	if(inBox) {
+		mapImg.style.cursor = "move";
+		isDragging = true;
+	}	
 }
 
 
 
+document.addEventListener("mouseup", handleMouseUp);
+function handleMouseUp(event){
+	if(isDragging){
+		mapImg.style.cursor = "auto";
+		prevX = cursorX;
+		prevY = cursorY;
+		getX = parseInt(mapImg.style.left);
+		getY = parseInt(mapImg.style.top);
+		setCenterX = (mapFrameWidth + FRAME_MARGIN) / HALF;
+		setCenterY = (mapFrameHeight + FRAME_MARGIN) / HALF;
+		cursorX = event.clientX;
+		cursorY = event.clientY;
+		change(prevX, prevY, cursorX, cursorY);
+		isDragging = false;
+	}
+}
 
 
+document.addEventListener("mousemove", handleMouseMove);
+function handleMouseMove(event) {
+	if(isDragging){
+		prevX = cursorX;
+		prevY = cursorY;
+		getX = parseInt(mapImg.style.left);
+		getY = parseInt(mapImg.style.top);
+		setCenterX = (mapFrameWidth + FRAME_MARGIN) / HALF;
+		setCenterY = (mapFrameHeight + FRAME_MARGIN) / HALF;
+		cursorX = event.clientX;
+		cursorY = event.clientY;
+		change(prevX, prevY, cursorX, cursorY);
+	}
+}
 
-
-// updating the map
-function changeMap(event) {
+document.addEventListener("dblclick", handleDblClick);
+function handleDblClick(event) {
 	prevX = cursorX;
 	prevY = cursorY;
 	getX = parseInt(mapImg.style.left);
 	getY = parseInt(mapImg.style.top);
-	setCenterX = (mapFrameWidth + FRAME_WINDOW) / 2;
-	setCenterY = (mapFrameHeight + FRAME_WINDOW) / 2;
+	setCenterX = (mapFrameWidth + FRAME_MARGIN) / HALF;
+	setCenterY = (mapFrameHeight + FRAME_MARGIN) / HALF;
 	cursorX = event.clientX;
 	cursorY = event.clientY;
+	change(cursorX, cursorY, setCenterX, setCenterY);
 }
 
 
-
-
-
-function move(x, y, currX, currY, upDown) {
-	var moveDown = currY - y;
-	var moveRight = currX - x;
-	var moveInterval = PIXEL;
-
+function change(cursorx, cursory, currX, currY, smoothScroll) {
 	getX = parseInt(mapImg.style.left);
 	getY = parseInt(mapImg.style.top);
 
-	if(upDown) {
-		setInterval(function() {
-			getX = parseInt(mapImg.style.left);
-			getY = parseInt(mapImg.style.top);
+	var intervalValue = PIXEL;
+	var moveDown = currY - cursory;
+	var moveRight = currX - cursorx;
 
-			if(moveRight > 0) {
-				if(moveRight < moveInterval){
-					mapImg.style.left = getX + moveRight + "px";
-					moveRight = 0;
-				} else {
-					moveRight = moveRight - moveInterval;
-					mapImg.style.left = getX + moveInterval + "px";
-				}
-			} else if(moveRight < 0){
-				if(moveRight > -moveInterval){
-					mapImg.style.left = getX + moveRight + "px";
-					moveRight = 0;
-				} else {
-					moveRight = moveRight + moveInterval;
-					mapImg.style.left = getX - moveInterval + "px";
-				}
-			}
-			if(moveDown > 0){
-				if(moveDown < moveInterval){
-					mapImg.style.top = getY + moveDown + "px";
-					moveDown = 0;
-				} else {
-					moveDown = (moveDown - moveInterval);
-					mapImg.style.top = getY + moveInterval + "px";
-				}
-			} else if(moveDown < 0){
-				if(moveDown > -moveInterval){
-					mapImg.style.top = getY + moveDown + "px";
-					moveDown = 0;
-				} else {
-					moveDown = moveDown + moveInterval;
-					mapImg.style.top = getY - moveInterval + "px";
-				}
-			}
-		}, INTERVAL )} else {
-			mapImg.style.left = getX + moveRight + "px";
-			mapImg.style.top = getY + moveDown + "px";
-		}
+	if(smoothScroll == true) {
+		setInterval(
+			() => {
+				getX = parseInt(mapImg.style.left);
+				getY = parseInt(mapImg.style.top);
 
+				// var leftStyle = mapImg.style.left;
+				// var topStyle = mapImg.style.top;
+
+
+				if(moveDown > 0){
+					
+					if(moveDown < intervalValue){
+						mapImg.style.top = getY + moveDown + "px";
+						moveDown = 0;
+					} else {
+						moveDown = moveDown - intervalValue;
+						mapImg.style.top = getY + intervalValue + "px";
+						// mapImg.style.top = parseInt(window.getComputedStyle(mapImg).getPropertyValue("top"))
+					}
+
+				} else if(moveDown < 0){
+					if(moveDown > -intervalValue){
+						mapImg.style.top = getY + moveDown + "px";
+						moveDown = 0;
+					} else {
+						moveDown = moveDown + intervalValue;
+						mapImg.style.top = getY - intervalValue + "px";
+						// mapImg.style.top = parseInt(window.getComputedStyle(mapImg).getPropertyValue("top")) 
+					}
+				}
+
+
+				if(moveRight > 0) {
+					if(moveRight < intervalValue){
+						mapImg.style.left = getX + moveRight + "px";
+						moveRight = 0;
+					} else {
+						moveRight = moveRight - intervalValue;
+						mapImg.style.left = getX + intervalValue + "px";
+					}
+				} else if(moveRight < 0){
+					if(moveRight > -intervalValue){
+						mapImg.style.left = getX + moveRight + "px";
+						moveRight = 0;
+					} else {
+						moveRight = moveRight + intervalValue;
+						mapImg.style.left = getX - intervalValue + "px";
+					}
+				}
+				
+			}, INTERVAL )} else {
+								mapImg.style.left = getX + moveRight + "px";
+								mapImg.style.top = getY + moveDown + "px";
+						   }
 }
 
 
+var mapImg = document.getElementById("mapImg");
+var mapFrame = document.getElementById("mapFrame");
 
-// zoom in 
 document.getElementById("zoomIn").addEventListener("click", function() {
 	var previous = currImg;
 	currImg++;
@@ -124,21 +174,20 @@ document.getElementById("zoomIn").addEventListener("click", function() {
 	getX = parseInt(mapImg.style.left);
 	getY = parseInt(mapImg.style.top);
 	mapImg.src = mapArray[currImg].filename;
-	
-	var currX = (mapFrameWidth / 2) - getX;
+
+
+	var frameWSize = mapFrameWidth / HALF;
+	var currX = frameWSize - getX;
 	var currWidth = mapArray[currImg].width / mapArray[previous].width;
 	var currXPos = currWidth * currX;
 
-	var currY = (mapFrameHeight / 2) - getY;
-	var currHeight = mapArray[currImg].height / mapArray[previous].width;
+	var frameHSize = mapFrameWidth / HALF;
+	var currY = frameHSize - getY;
+	var currHeight = mapArray[currImg].height / mapArray[previous].height;
 	var currYPos = currHeight * currY;
+	change(currXPos, currYPos, currX, currY);
+}, false);
 
-	move(currXPos, currYPos, currX, currY);}, false);
-
-
-
-
-// zoom out
 
 document.getElementById("zoomOut").addEventListener("click", function() {
 	var previous = currImg;
@@ -148,123 +197,71 @@ document.getElementById("zoomOut").addEventListener("click", function() {
 	getY = parseInt(mapImg.style.top);
 	mapImg.src = mapArray[currImg].filename;
 
-	var currX = (mapFrameWidth / 2) - getX;
+	var frameWSize = mapFrameWidth / HALF;
+	var currX = frameWSize - getX;
 	var currWidth = mapArray[currImg].width / mapArray[previous].width;
 	var currXPos = currWidth * currX;
 
-	var currY = (mapFrameHeight / 2) - getY;
-	var currHeight = mapArray[currImg].height / mapArray[previous].width;
+	var frameHSize = mapFrameWidth / HALF;
+	var currY = frameHSize - getY;
+	var currHeight = mapArray[currImg].height / mapArray[previous].height;
 	var currYPos = currHeight * currY;
-
-	move(currXPos, currYPos, currX, currY);}, false);
-
+	change(currXPos, currYPos, currX, currY);}, false);
 
 
-// move up 
-document.getElementById("up").addEventListener("click", function() {
+
+function moveLeft() {
+
 	getX = parseInt(mapImg.style.left);
 	getY = parseInt(mapImg.style.top);
-	move(0, 0, 0, -(mapFrameHeight / 2), true);
-}, false);
-
-// move down 
-document.getElementById("down").addEventListener("click", function(){
-	getX = parseInt(mapImg.style.left);
-	getY = parseInt(mapImg.style.top);
-	move(0, 0, 0, -(mapFrameHeight / 2), true);
-}, false);
-
-// move right
-document.getElementById("right").addEventListener("click", function(){
-	getX = parseInt(mapImg.style.left);
-	getY = parseInt(mapImg.style.top);
-	move(0, 0, -(mapFrameWidth / 2), 0, true);
-}, false);
-
-// move left
-document.getElementById("left").addEventListener("click", function() {
-	getX = parseInt(mapImg.style.left);
-	getY = parseInt(mapImg.style.top);
-	move(0, 0, -(mapFrameWidth / 2), 0, true);
+	var frameSize = mapFrameWidth / HALF;
+	change(0, 0, frameSize, 0, true);
 }
-, false);
+
+function moveUp() {
+	getX = parseInt(mapImg.style.left);
+	getY = parseInt(mapImg.style.top);
+	var frameSize = mapFrameWidth / HALF;
+	change(0, 0, 0, frameSize, true);
+}
+
+function moveDown() {
+	getX = parseInt(mapImg.style.left);
+	getY = parseInt(mapImg.style.top);
+	var frameSize = mapFrameWidth / HALF;
+	change(0, 0, 0, -frameSize, true);
+}
+
+function moveRight() {
+	getX = parseInt(mapImg.style.left);
+	getY = parseInt(mapImg.style.top);
+	var frameSize = mapFrameWidth / HALF;
+	change(0, 0, -frameSize, 0, true);
+}
 
 
-// resizing the frame 
-window.addEventListener("resize",resizeFrame, false);
-function resizeFrame() {
-	windowWidth = window.innerWidth;
-	windowHeight = window.innerHeight;
-	mapFrameWidth = windowWidth - FRAME_WINDOW;
-	mapFrameHeight = windowHeight - FRAME_WINDOW;
-	mapFrame.style.height = mapFrameHeight + "px";
+function reSize() {
+  	mapFrameHeight = window.innerHeight - FRAME_MARGIN;
+  	mapFrameWidth = window.innerWidth - FRAME_MARGIN;
+  	mapFrame.style.height = mapFrameHeight + "px";
 	mapFrame.style.width = mapFrameWidth + "px";
 }
 
-window.addEventListener("load", resizeFrame, false);
+function preloadImages() {
+	for(let i = 0; i < 4; i++) {
+		mapImg.src = mapArray[i].filename;
+	}
+	mapImg.src = mapArray[currImg].filename;
+}
+
+
+document.getElementById("right").addEventListener("click", moveRight);
+document.getElementById("left").addEventListener("click", moveLeft);
+document.getElementById("up").addEventListener("click", moveUp);
+document.getElementById("down").addEventListener("click", moveDown);
+
+
 window.addEventListener("load", preloadImages, false);
-
-
-
-
-document.addEventListener("mousemove",handleMouseMove);
-function handleMouseMove(event) {
-	if(isDragging){
-		changeMap(event);
-		move(prevX, prevY, cursorX, cursorY);
-	}
-}
-
-
-document.addEventListener("mousedown",handleMouseDown);
-function handleMouseDown(event){
-	cursorX = event.clientX;
-	cursorY = event.clientY;
-	event.preventDefault();
-
-	var frameWidth = window.innerWidth;
-	var frameHeight = window.innerHeight;
-	var frameXcoord = frameWidth + MARGIN;
-	var frameYcoord = frameHeight + MARGIN;
-	var withinFrame = false;
-
-	if((cursorY > MARGIN && cursorY < frameYcoord) && 
-		( cursorX < frameXcoord && cursorX > MARGIN)) {
-		withinFrame = true;
-	} else {
-		withinFrame = false;
-	}
-
-	if(withinFrame) {
-		mapImg.style.cursor = "move";
-		isDragging = true;
-	}	
-}
-
-
-document.addEventListener("mouseup",handleMouseUp);
-function handleMouseUp(event){
-	if(isDragging){
-		mapImg.style.cursor = "auto";
-		changeMap(event);
-		move(prevX, prevY, cursorX, cursorY);
-		isDragging = false;
-	}
-}
-
-
-
-
-document.addEventListener("dblclick",handleDblClick);
-function handleDblClick(event) {
-	changeMap(event);
-	move(cursorX, cursorY, setCenterX, setCenterY);
-}
-
-
-
-
-
-
-
+window.addEventListener("load", reSize, false);
+window.addEventListener("resize", reSize, false);
 

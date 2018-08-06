@@ -2,24 +2,25 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<!-- <meta http-equiv="refresh" content="10"> -->
 <script src="stanfordmap.js" defer></script>
 <link rel="stylesheet" type="text/css" href="stanfordmap.css">
 <title>Stanford Map</title>
 </head>
 <body>
 
-	<div id="mapFrame"> <img id="mapImg" src="map-s.gif" alt="map"> </div>
+	<div id="mapFrame"> <img id="mapImg" src="map-s.gif" alt="map" style="left:0; top:0;"> </div>
 	
 	<form id="mapnavigation">
 		<div id="zooming">
-			<input type="button" id="zoomIn" value="+" onmousedown="event.stopPropagation();" ondblclick="event.stopPropagation();"> <!-- stop bubbling up to parent elements or capturing down to child elements. -->
-			<input type="button" id="zoomOut" value="-" onmousedown="event.stopPropagation();" ondblclick="event.stopPropagation();">
+			<input id="zoomIn" type="button" value="+" >
+			<input id="zoomOut" type="button" value="-">
 		</div>
 		<div id="directions">
-			<input type="button" id="up" value="^" onmousedown="event.stopPropagation();" ondblclick="event.stopPropagation();"><br>
-			<input type="button" id="left" value="<" onmousedown="event.stopPropagation();" ondblclick="event.stopPropagation();">
-			<input type="button" id="right" value=">" onmousedown="event.stopPropagation();" ondblclick="event.stopPropagation();"><br>
-			<input type="button" id="down" value="v" onmousedown="event.stopPropagation();" ondblclick="event.stopPropagation();">
+			<input id="up" type="button" value="^" onmousedown="event.stopPropagation()"><br>
+			<input id="left"  type="button" value="<"  onmousedown="event.stopPropagation()">
+			<input id="right"  type="button" value=">" onmousedown="event.stopPropagation()"><br>
+			<input id="down"  type="button" value="v" onmousedown="event.stopPropagation()">
 		</div>
 	</form>
 

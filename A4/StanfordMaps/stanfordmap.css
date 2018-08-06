@@ -1,58 +1,48 @@
-input {
-	margin: 4px;
-}
-
 #mapImg {
-	position: absolute;
-}
-#mapImg {
-	position: absolute;
-	/*width: 800px;
-	height: 600px;*/
+  position:absolute;
 }
 
 #mapFrame {
-	overflow: hidden;
-	position: absolute;
-	border: solid gray;
-	border-width: 20px;
-	top: 10px;
-	left: 10px;
-	/*width: 820px;
-	height: 620px;*/
+  top:10px;
+  left:10px;
+  border-style: solid;
+  border-color: #00FFFF;
+  border-width: 20px;
+  overflow: hidden;
+  position: absolute;
 }
 
-#mapNavigation {
-	
-	width: 100px;
-	height: 200px;
-	position: absolute;
-	right: 10px;
-	top: 10px;
-	margin: 20px;
-	/*float:right;*/
-	text-align: center;
-	background-color: #d3d3d3;
-	opacity: 0.5;
+/*button {
+  background color: blue;
+}*/
+
+#left {
+  margin-right: 20px;
 }
 
 #zooming {
-	margin-top: 20px;
-	/*float: right;
-	text-align: center;
-	margin-bottom: */
+  margin-top: 20px;
+}
+
+input {
+  margin: 5px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: black;
+
+}
+
+#mapnavigation {
+  width: 100px;
+  height: 230px;
+  position: absolute;
+  text-align: center;
+  top: 10px;
+  right: 10px;
+  margin: 20px;
 }
 
 #directions {
-	margin-top: 40px;
-	/*float: right;
-	text-align: center;*/
+  margin-top: 40px;
 }
-
-
-
-#left {
-	margin-right: 20px;
-}
-
 
