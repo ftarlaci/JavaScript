@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Weather</title>
+<style> 
+	#zipcode {
+		margin-left: 5px;
+		margin-bottom: 5px;
+	}
+	#enterzip {
+		font-weight: bold;
+		height: 20px;
+	}
+	#ajaxresponse {
+		font-family: Garamond;
+		font-size: 12pt;
+	}
+	#clearbtn {
+		background-color: #A8A8A8;
+		width: 50px;
+		height: 20px;
+	}
+	#weatherbtn {
+		background-color: #A8A8A8;
+		width: 90px;
+		height: 20px;
+	}
+</style>
+</head>
+<body>
+	<h1> Open Weather via AJAX </h1>
+	<form>
+		<span id="enterzip">Enter ZIP Code:</span><input id="zipcode" type="text" name="zipcode">
+		<input id="weatherbtn" type="button" value="Get Weather">
+		<input id="clearbtn" type="button" value="Clear"><br>
+		<textarea id="ajaxresponse" rows="20" cols="60" value=""></textarea>
+	</form>
+	
+	<script defer>
+		var ZIPCODE = document.getElementById("zipcode");
+		// ajax response textarea
+		var ajaxresponse = document.getElementById("ajaxresponse");
+		var clearbtn = document.getElementById("clearbtn");
+		clearbtn.addEventListener("click", () => {
+			// clearbtn.value = "";
+			ajaxresponse.value = "";
+			zipcode.value = ""; 
+		}, false);
+		var weatherbtn = document.getElementById("weatherbtn");
+		weatherbtn.addEventListener("click", getAJAX, false);	
+		var requestObj = null;	// XMLHttpRequest object
+		function getAJAX() {
+			requestObj = new XMLHttpRequest();
+			requestObj.addEventListener("load", processWeather, null);
+			var zip = ZIPCODE.value;
+			requestObj.open("GET", "http://api.openweathermap.org/data/2.5/weather?zip=" + zip + ",us&units=imperial&APPID=" + "97a89ae9d05f4bd62725c3ef7a341ad5" + "&mode=xml", true);
+			requestObj.send(null);
+		}
+
+		function processWeather() {
+			var city = requestObj.responseXML.getElementsByTagName("city")[0].getAttribute("name"); 
+			var temp = requestObj.responseXML.getElementsByTagName("temperature")[0].getAttribute("value");
+			ajaxresponse.value = city + ": " + temp + "\n" + ajaxresponse.value;
+		}
+</script>
+</body>
+</html>
